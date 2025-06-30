@@ -313,6 +313,9 @@ async function MD5MD5(text) {
 }
 
 function clashFix(content) {
+	// 去除IPv6地址中的方括号
+	content = content.replace(/\[([0-9a-fA-F:]+)\]/g, '$1');
+
 	if (content.includes('wireguard') && !content.includes('remote-dns-resolve')) {
 		let lines;
 		if (content.includes('\r\n')) {
